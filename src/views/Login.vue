@@ -34,7 +34,10 @@
         >
       </div>
     </div>
-    <button class="login_submit">登&nbsp;&nbsp;录</button>
+    <button
+      class="login_submit"
+      @click="submit"
+    >登&nbsp;&nbsp;录</button>
     <div class="login_bottom">
       <router-link
         to=""
@@ -49,10 +52,9 @@
 </template>
 
 <script>
+import api from '../api';
 export default {
   name: '',
-  components: {
-  },
   data() {
     return {
       mobile_phone: '',
@@ -61,10 +63,18 @@ export default {
     }
   },
   created() {
-
   },
   methods: {
-
+    submit() {
+      this.axios.post(api.login, {
+        username: this.mobile_phone,
+        password: this.password
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+    }
   },
 }
 </script>
