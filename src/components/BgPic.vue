@@ -1,7 +1,7 @@
 <template>
-  <div class="login">
+  <div class="bg">
     <div class="logo"></div>
-    <div class="login_panel">
+    <div class="bg_panel">
       <slot name="content"/>
     </div>
     <slot name="btn_group"></slot>
@@ -11,7 +11,6 @@
 <script>
 export default {
   name: "",
-
   data() {
     return {};
   }
@@ -19,7 +18,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login {
+.bg {
   background: url("../assets/login_bg.png") no-repeat center center;
   background-size: cover;
   width: 100%;
@@ -32,7 +31,7 @@ export default {
     height: 33px;
     margin: 140px auto 125px;
   }
-  .login_panel {
+  .bg_panel {
     width: 335px;
     margin: 0 auto;
   }

@@ -8,8 +8,8 @@
       </div>
     </template>
     <template slot="btn_group">
-      <button class="login_submit" @click="submit">登&nbsp;&nbsp;录</button>
-      <div class="login_bottom">
+      <button class="submit_btn" @click="submit">登&nbsp;&nbsp;录</button>
+      <div class="submit_bottom">
         <router-link to class="link">联系客服</router-link>
         <router-link to="/register" class="register">立即注册</router-link>
       </div>
@@ -58,22 +58,6 @@ export default {
 </script>
 
 <style lang="less">
-/* .login {
-  background: url("../assets/login_bg.png") no-repeat center center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  .logo {
-    background: url("../assets/logo.png") no-repeat center center;
-    background-size: cover;
-    width: 108px;
-    height: 33px;
-    margin: 140px auto 125px;
-  } */
-/* .login_panel {
-    width: 335px;
-    margin: 0 auto; */
 .pass_box {
   width: 100%;
   position: relative;
@@ -119,8 +103,7 @@ input {
     background-size: 26px 26px;
   }
 }
-// }
-.login_submit {
+.submit_btn {
   width: 298px;
   height: 45px;
   background: #354281;
@@ -133,7 +116,7 @@ input {
   transform: translateX(-50%);
   outline: none;
 }
-.login_bottom {
+.submit_bottom {
   width: 298px;
   margin: 0 auto;
   display: flex;
@@ -145,5 +128,4 @@ input {
     color: #fff;
   }
 }
-// }
 </style>

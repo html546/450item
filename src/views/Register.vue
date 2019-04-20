@@ -1,7 +1,18 @@
 <template>
   <BgPic>
     <template slot="content">
-      <h1>我是注册</h1>
+      <div v-for="(item,index) in regdatasets" :key="index">
+        <input
+          :type="item.input"
+          v-if="item.input!=='hidden'&&item.input!=='select'"
+          :placeholder="item.name"
+          :value="item.default"
+        >
+        <select v-else-if="item.input!=='hidden'&&item.input!=='text'">
+          <option value :readonly="true" disabled selected>{{item.name}}</option>
+          <option value v-for="(val,key) in item.select" :key="key">{{val}}</option>
+        </select>
+      </div>
     </template>
     <template slot="btn_group">
       <h2>我是按钮组</h2>
@@ -19,7 +30,9 @@ export default {
     BgPic
   },
   data() {
-    return {};
+    return {
+      regdatasets: ""
+    };
   },
   created() {
     this.getPage();
@@ -30,6 +43,7 @@ export default {
         .post(api.register)
         .then(res => {
           console.log(res);
+          this.regdatasets = res.data.data.regdatasets;
         })
         .catch(err => {
           console.log(err);
