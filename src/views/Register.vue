@@ -21,39 +21,38 @@
 </template>
 
 <script>
-import api from "../api";
-import axios from "axios";
-import BgPic from "../components/BgPic.vue";
+import api from '../api'
+import BgPic from '../components/BgPic.vue'
 export default {
-  name: "",
+  name: '',
   components: {
     BgPic
   },
-  data() {
+  data () {
     return {
-      regdatasets: ""
-    };
+      regdatasets: ''
+    }
   },
-  created() {
-    this.getPage();
+  created () {
+    this.getPage()
   },
   methods: {
-    getPage() {
+    getPage () {
       this.axios
         .post(api.register)
         .then(res => {
-          console.log(res);
-          this.regdatasets = res.data.data.regdatasets;
+          console.log(res)
+          this.regdatasets = res.data.data.regdatasets
         })
         .catch(err => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     },
-    submit(e) {
-      e.preventDefault();
+    submit (e) {
+      e.preventDefault()
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

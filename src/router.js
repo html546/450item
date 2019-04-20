@@ -28,4 +28,4 @@ export default new Router({
         import(/* webpackChunkName: "about" */ './views/About.vue')
     }
   ]
-});
+})
