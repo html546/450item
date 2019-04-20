@@ -1,5 +1,6 @@
 let api = {
-  login: "/api/login/login"
-};
+  login: '/api/login/login',
+  register: '/api/webmember/register'
+}
 
-export default api;
+export default api
