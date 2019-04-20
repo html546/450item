@@ -15,7 +15,7 @@
       </div>
     </template>
     <template slot="btn_group">
-      <h2>我是按钮组</h2>
+      <button class="submit_btn" @click="submit">注&nbsp;&nbsp;册</button>
     </template>
   </BgPic>
 </template>
@@ -48,6 +48,9 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    submit(e) {
+      e.preventDefault();
     }
   }
 };
