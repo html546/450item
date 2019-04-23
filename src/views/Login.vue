@@ -43,7 +43,7 @@ export default {
         })
         .then(res => {
           callback1(res, () => {
-            this.$router.replace("/home");
+            this.$router.replace("/tab");
           });
         })
         .catch(err => {
