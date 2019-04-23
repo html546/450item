@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="tab">
     <router-view class="page"></router-view>
     <van-tabbar v-model="active" class="tabbar" fixed>
       <van-tabbar-item to="/tab">
@@ -72,10 +72,10 @@ export default {
     }
   }
   span {
-    color: #fff;
+    color: #5568b3;
   }
 }
-.home {
+.tab {
   height: 100%;
   .page {
     height: calc(100% - 1.33333rem);

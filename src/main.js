@@ -5,6 +5,7 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import 'lib-flexible'
+// import './assets/css/reset.css'
 
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false

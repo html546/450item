@@ -21,6 +21,7 @@
 import api from "../api";
 import BgPic from "../components/BgPic.vue";
 import { callback1 } from "../util";
+import store from "../store";
 export default {
   name: "",
   data() {
@@ -42,7 +43,12 @@ export default {
           password: this.password
         })
         .then(res => {
-          callback1(res, () => {
+          callback1(res, res => {
+            let message = {
+              userid: res.data.result.id,
+              sessionid: res.data.result.sessionid
+            };
+            store.commit("SET_MESSAGE", message);
             this.$router.replace("/tab");
           });
         })

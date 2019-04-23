@@ -4,11 +4,11 @@ import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Tab from './views/Tab.vue'
-import Home from './views/Home.vue'
-import Contract from './views/Contract.vue'
-import Future from './views/Future.vue'
-import Option from './views/Option.vue'
-import Mine from './views/Mine.vue'
+import Home from './page/Home.vue'
+import Contract from './page/Contract.vue'
+import Future from './page/Future.vue'
+import Option from './page/Option.vue'
+import Mine from './page/Mine.vue'
 
 Vue.use(Router)
 
@@ -25,8 +25,8 @@ export default new Router({
       component: Register
     },
     {
-      path: '/Tab',
-      name: 'Tab',
+      path: '/tab',
+      name: 'tab',
       component: Tab,
       children: [
         {

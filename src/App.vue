@@ -4,6 +4,8 @@
   </div>
 </template>
 
+<script>
+</script>
 <style lang="less">
 html,
 body {
