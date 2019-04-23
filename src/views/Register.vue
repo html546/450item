@@ -1,59 +1,83 @@
 <template>
   <BgPic>
-    <template slot="content">
-      <div v-for="(item,index) in regdatasets" :key="index">
+    <template #content>
+      <div v-for="(val,key) in regdatasets" :key="key">
         <input
-          :type="item.input"
-          v-if="item.input!=='hidden'&&item.input!=='select'"
-          :placeholder="item.name"
-          :value="item.default"
+          :type="val.input"
+          v-if="val.input!=='hidden'&&val.input!=='select'"
+          :placeholder="val.name"
+          :value="val.default"
+          :class="[key==='introduce'?'mobile':'',key==='service_center_uplevel'?'pass':'']"
         >
-        <select v-else-if="item.input!=='hidden'&&item.input!=='text'">
-          <option value :readonly="true" disabled selected>{{item.name}}</option>
-          <option value v-for="(val,key) in item.select" :key="key">{{val}}</option>
+        <select
+          v-else-if="val.input!=='hidden'&&val.input!=='text'"
+          class="select"
+          v-model="val.default"
+        >
+          <!-- <option disabled value="">请选择{{val.name}}</option> -->
+          <option value :disabled="true">请选择</option>
+          <option :value="key1" v-for="(val1,key1) in val.select" :key="key1">{{val1}}</option>
         </select>
       </div>
     </template>
-    <template slot="btn_group">
+    <template #btn_group>
       <button class="submit_btn" @click="submit">注&nbsp;&nbsp;册</button>
     </template>
   </BgPic>
 </template>
 
 <script>
-import api from '../api'
-import BgPic from '../components/BgPic.vue'
+import api from "../api";
+import BgPic from "../components/BgPic.vue";
 export default {
-  name: '',
+  name: "",
   components: {
     BgPic
   },
-  data () {
+  data() {
     return {
-      regdatasets: ''
+      regdatasets: ""
+    };
+  },
+  created() {
+    this.getPage();
+  },
+  computed: {
+    ismobile() {
+      return;
     }
   },
-  created () {
-    this.getPage()
-  },
   methods: {
-    getPage () {
+    getPage() {
       this.axios
         .post(api.register)
         .then(res => {
-          console.log(res)
-          this.regdatasets = res.data.data.regdatasets
+          console.log(res);
+          this.regdatasets = res.data.data.regdatasets;
         })
         .catch(err => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     },
-    submit (e) {
-      e.preventDefault()
+    submit(e) {
+      e.preventDefault();
     }
   }
-}
+};
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+.select {
+  width: 100%;
+  height: 30px;
+  background: none;
+  outline: none;
+  border: none;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  option {
+    color: #333;
+  }
+}
 </style>

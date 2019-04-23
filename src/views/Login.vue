@@ -1,13 +1,13 @@
 <template>
   <BgPic>
-    <template slot="content">
+    <template #content>
       <input type="text" v-model="mobile_phone" class="mobile" placeholder="请输入手机号">
       <div class="pass_box">
         <input type="password" v-model="password" class="pass" placeholder="请输入密码">
         <router-link to class="forget_pass">忘记密码?</router-link>
       </div>
     </template>
-    <template slot="btn_group">
+    <template #btn_group>
       <button class="submit_btn" @click="submit">登&nbsp;&nbsp;录</button>
       <div class="submit_bottom">
         <router-link to class="link">联系客服</router-link>
