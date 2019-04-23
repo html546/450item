@@ -18,43 +18,40 @@
 </template>
 
 <script>
-import api from '../api'
-import { Toast } from 'vant'
-import BgPic from '../components/BgPic.vue'
+import api from "../api";
+import BgPic from "../components/BgPic.vue";
+import { callback1 } from "../util";
 export default {
-  name: '',
-  data () {
+  name: "",
+  data() {
     return {
-      mobile_phone: '',
-      password: '',
-      verify_code: ''
-    }
+      mobile_phone: "",
+      password: "",
+      verify_code: ""
+    };
   },
   components: {
     BgPic
   },
-  created () {},
+  created() {},
   methods: {
-    submit () {
+    submit() {
       this.axios
         .post(api.login, {
           username: this.mobile_phone,
           password: this.password
         })
         .then(res => {
-          console.log(res)
-          if (res.data.status === 1) {
-            Toast.success(res.data.msg)
-          } else if (res.data.status === 0) {
-            Toast.fail(res.data.msg)
-          }
+          callback1(res, () => {
+            this.$router.replace("/home");
+          });
         })
         .catch(err => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
   }
-}
+};
 </script>
 
 <style lang="less">

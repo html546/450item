@@ -15,7 +15,7 @@
           v-model="val.default"
         >
           <!-- <option disabled value="">请选择{{val.name}}</option> -->
-          <option value :disabled="true">请选择</option>
+          <option value disabled>请选择{{val.name}}</option>
           <option :value="key1" v-for="(val1,key1) in val.select" :key="key1">{{val1}}</option>
         </select>
       </div>
