@@ -9,6 +9,7 @@ import Contract from './page/Contract.vue'
 import Future from './page/Future.vue'
 import Option from './page/Option.vue'
 import Mine from './page/Mine.vue'
+import Guess from './page/Guess.vue'
 
 Vue.use(Router)
 
@@ -55,6 +56,11 @@ export default new Router({
           component: Mine
         }
       ]
+    },
+    {
+      path: '/guess',
+      name: 'guess',
+      component: Guess
     },
     {
       path: '/about',
