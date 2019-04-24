@@ -40,22 +40,22 @@
     <div class="time_slot">
       <van-row>
         <van-col span="4">
-          <button :class="{active:isActive}">分时</button>
+          <button :class="{active:shows==1}" @click="hourShow">分时</button>
         </van-col>
         <van-col span="4">
-          <button>5分</button>
+          <button :class="{active:shows==2}" @click="fiveShow">5分</button>
         </van-col>
         <van-col span="4">
-          <button>15分</button>
+          <button :class="{active:shows==3}" @click="fifShow">15分</button>
         </van-col>
         <van-col span="4">
-          <button>30分</button>
+          <button :class="{active:shows==4}" @click="thiryShow">30分</button>
         </van-col>
         <van-col span="4">
-          <button>1小时</button>
+          <button :class="{active:shows==5}" @click="OnehourShow">1小时</button>
         </van-col>
         <van-col span="4">
-          <button>日线</button>
+          <button :class="{active:shows==6}" @click="dayShow">日线</button>
         </van-col>
       </van-row>
     </div>
@@ -68,7 +68,7 @@ export default {
   name: "",
   data() {
     return {
-      isActive: true
+      shows: 1
     };
   },
   components: {
@@ -82,6 +82,24 @@ export default {
     },
     onClickRight() {
       Toast("我的竞猜");
+    },
+    hourShow() {
+      this.shows = 1;
+    },
+    fiveShow() {
+      this.shows = 2;
+    },
+    fifShow() {
+      this.shows = 3;
+    },
+    thiryShow() {
+      this.shows = 4;
+    },
+    OnehourShow() {
+      this.shows = 5;
+    },
+    dayShow() {
+      this.shows = 6;
     }
   }
 };
