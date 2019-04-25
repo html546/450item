@@ -300,6 +300,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.no-border {
+  border: none;
+  outline: none;
+}
 .guess {
   width: 100%;
   height: 100%;
@@ -324,8 +328,7 @@ export default {
     select {
       background: none;
       color: #fff;
-      outline: nonoe;
-      border: none;
+      .no-border();
       text-align: center;
       option {
         color: #333;
@@ -357,8 +360,7 @@ export default {
   margin-top: 12px;
   button {
     background: none;
-    outline: none;
-    border: none;
+    .no-border();
     color: #636888;
     width: 100%;
     text-align: center;
@@ -377,8 +379,7 @@ export default {
       width: 171px;
       height: 43px;
       color: #fff;
-      border: none;
-      outline: none;
+      .no-border();
       border-radius: 5px;
       &.btn_rise {
         background: #71cd8c;
@@ -438,16 +439,12 @@ export default {
       height: 30px;
       background: #71cd8c;
       color: #fff;
-      outline: none;
-      border: none;
+      .no-border();
       float: left;
     }
     select {
-      /* position: absolute;
-    right: 14px; */
       float: right;
-      border: none;
-      outline: none;
+      .no-border();
       line-height: 33px;
       height: 33px;
     }
@@ -463,8 +460,7 @@ export default {
     color: #fff;
     background: #dc6976;
     margin: 22px auto;
-    outline: none;
-    border: none;
+    .no-border();
   }
 }
 </style>

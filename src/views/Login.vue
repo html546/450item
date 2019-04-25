@@ -61,6 +61,10 @@ export default {
 </script>
 
 <style lang="less">
+.no-border {
+  border: none;
+  outline: none;
+}
 .bgpic {
   .pass_box {
     width: 100%;
@@ -85,15 +89,14 @@ export default {
 
   input {
     width: 100%;
-    border: none;
     background: none;
-    border-bottom: 2px solid #fff;
     height: 30px;
     color: #fff;
     margin-bottom: 25px;
     position: relative;
     text-indent: 26px;
-    outline: none;
+    .no-border();
+    border-bottom: 2px solid #fff;
     &.mobile {
       background: url("../assets/login_pic01.png") no-repeat left center;
       background-size: 26px 26px;
@@ -113,12 +116,11 @@ export default {
     background: #354281;
     color: #fff;
     font-size: 13.5px;
-    border: none;
     border-radius: 22.5px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    outline: none;
+    .no-border();
   }
   .submit_bottom {
     width: 298px;

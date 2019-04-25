@@ -67,12 +67,15 @@ export default {
 </script>
 
 <style lang="less">
+.no-border {
+  border: none;
+  outline: none;
+}
 .select {
   width: 100%;
   height: 30px;
   background: none;
-  outline: none;
-  border: none;
+  .no-border();
   margin-bottom: 25px;
   border-bottom: 2px solid #fff;
   color: #fff;
