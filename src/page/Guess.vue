@@ -18,24 +18,24 @@
               <option value="spot/candle60s:ETH-USDT">ETH</option>
               <option value="spot/candle60s:LTC-USDT">LTC</option>
             </select>
-            <span>5095.27</span>
+            <span>{{last}}</span>
             <span>≈34087.36CNY</span>
           </div>
         </van-col>
         <van-col span="14" :offset="2">
           <div class="price_right">
             <van-row type="flex" justify="center">
-              <van-col span="7" class="price_right_content">
+              <van-col span="4" class="price_right_content">
                 <span>竞猜</span>
                 <span class="up">1.93%</span>
               </van-col>
-              <van-col span="10" class="price_right_content">
+              <van-col span="16" class="price_right_content">
                 <span>24小时量</span>
-                <span>23321</span>
+                <span>{{quote_volume_24h}}</span>
               </van-col>
-              <van-col span="7" class="price_right_content">
+              <van-col span="4" class="price_right_content">
                 <span>最高价</span>
-                <span>5200</span>
+                <span>{{high_24h}}</span>
               </van-col>
             </van-row>
           </div>
@@ -73,11 +73,26 @@
     <div>
       <ve-candle :data="chartData" width="100%" :settings="chartSettings"></ve-candle>
     </div>
+    <div class="btn_group">
+      <van-row type="flex" justify="center" :gutter="10">
+        <van-col>
+          <button class="btn_rise" @click="CheckRise">看涨</button>
+        </van-col>
+        <van-col>
+          <button class="btn_fail">看跌</button>
+        </van-col>
+      </van-row>
+    </div>
+    <van-popup v-model="show" position="bottom" :overlay="false">
+      <div class="rise_content">
+        <img src="../assets/close.png" class="close_icon" alt @click="handleClose">
+      </div>
+    </van-popup>
   </div>
 </template>
 
 <script>
-import { NavBar, Toast, Row, Col } from "vant";
+import { NavBar, Toast, Row, Col, Popup } from "vant";
 import VeCandle from "v-charts/lib/candle.common";
 import "v-charts/lib/style.css";
 function timeToLocal(time) {
@@ -122,13 +137,18 @@ export default {
           "instrument_id"
         ],
         rows: []
-      }
+      },
+      quote_volume_24h: "",
+      high_24h: "",
+      last: "",
+      show: false
     };
   },
   components: {
     "van-nav-bar": NavBar,
     "van-row": Row,
     "van-col": Col,
+    "van-popup": Popup,
     VeCandle
   },
   created() {
@@ -158,8 +178,10 @@ export default {
           }
           that.chartData.rows = message.data.reverse();
           // console.log(that.chartData.rows);
-        }else if(message.type ==1){
-          
+        } else if (message.type == 1) {
+          that.quote_volume_24h = message.data.quote_volume_24h;
+          that.high_24h = message.data.high_24h;
+          that.last = message.data.last;
         }
       };
     } else {
@@ -215,6 +237,12 @@ export default {
       console.log(e);
       this.conn.send(e.target.value);
       this.coin = e.target.value;
+    },
+    CheckRise() {
+      this.show = true;
+    },
+    handleClose() {
+      this.show = false;
     }
   }
 };
@@ -287,6 +315,36 @@ export default {
     &.active {
       background: #1d2236;
     }
+  }
+}
+.btn_group {
+  button {
+    width: 171px;
+    height: 43px;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    &.btn_rise {
+      background: #71cd8c;
+    }
+    &.btn_fail {
+      background: #dc6976;
+    }
+  }
+}
+.rise_content {
+  width: 100%;
+  height: 371px;
+  background: #fff;
+  padding: 0 14px;
+  box-sizing: border-box;
+  .close_icon {
+    position: fixed;
+    top: 10px;
+    right: 14px;
+    width: 11px;
+    height: 11px;
   }
 }
 </style>
