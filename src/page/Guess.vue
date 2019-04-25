@@ -45,58 +45,74 @@
     <div class="time_slot">
       <van-row>
         <van-col span="3">
-          <button :class="{active:shows==1}" @click="OneShow">1分</button>
+          <button :class="{active:shows==1}" @click="OneShow('spot/candle60s')">1分</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==2}" @click="ThreeShow">3分</button>
+          <button :class="{active:shows==2}" @click="ThreeShow('spot/candle180s')">3分</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==3}" @click="fiveShow">5分</button>
+          <button :class="{active:shows==3}" @click="fiveShow('spot/candle300s')">5分</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==4}" @click="fifShow">15分</button>
+          <button :class="{active:shows==4}" @click="fifShow('spot/candle900s')">15分</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==5}" @click="thiryShow">30分</button>
+          <button :class="{active:shows==5}" @click="thiryShow('spot/candle1800s')">30分</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==6}" @click="OnehourShow">1小时</button>
+          <button :class="{active:shows==6}" @click="OnehourShow('spot/candle3600s')">1小时</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==7}" @click="dayShow">日线</button>
+          <button :class="{active:shows==7}" @click="dayShow('spot/candle86400s')">日线</button>
         </van-col>
         <van-col span="3">
-          <button :class="{active:shows==8}" @click="weekShow">周线</button>
+          <button :class="{active:shows==8}" @click="weekShow('spot/candle604800s')">周线</button>
         </van-col>
       </van-row>
     </div>
-
     <div>
-      <ve-line :data="chartData"></ve-line>
+      <ve-candle :data="chartData" width="100%" :settings="chartSettings"></ve-candle>
     </div>
   </div>
 </template>
 
 <script>
 import { NavBar, Toast, Row, Col } from "vant";
-import VeLine from "v-charts/lib/line.common";
+import VeCandle from "v-charts/lib/candle.common";
+import "v-charts/lib/style.css";
 function timeToLocal(time) {
-  date = new Date(time);
-  month = date.getMonth() + 1;
-  day = date.getDay();
-  hour = date.getHours();
-  minute = date.getMinutes();
-
-  return month + "-" + day + " " + hour + ":" + minute;
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let month = format(date.getMonth() + 1);
+  let day = format(date.getDay());
+  let hour = format(date.getHours());
+  let minute = format(date.getMinutes());
+  let second = format(date.getSeconds());
+  return (
+    year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second
+  );
+}
+function format(val) {
+  if (val < 10) {
+    return `0${val}`;
+  } else {
+    return val;
+  }
 }
 export default {
   name: "",
   data() {
     return {
+      chartSettings: {
+        showMA: true,
+        showVol: true,
+        showDataZoom: true
+      },
       shows: 1,
       conn: "",
+      coin: "spot/candle60s:BTC-USDT",
       chartData: {
-        column: [
+        columns: [
           "日期",
           "open",
           "highest",
@@ -113,58 +129,41 @@ export default {
     "van-nav-bar": NavBar,
     "van-row": Row,
     "van-col": Col,
-    VeLine
+    VeCandle
   },
   created() {
+    var that = this;
     if (window["WebSocket"]) {
       this.conn = new WebSocket("ws://47.52.168.164:8080/ws");
-      this.conn.onclose = function(evt) {
-        let content = "<b>Connection closed.</b>";
+      this.conn.onclose = function(evt) {};
+      this.conn.onopen = function(evt) {
+        that.conn.send("spot/candle60s:BTC-USDT");
       };
       this.conn.onmessage = function(evt) {
         var messages = evt.data.split("\n");
-        // console.log(JSON.parse(messages));
+        console.log(JSON.parse(messages));
         if (messages[0] == "errorRequest") {
           alert("请求错误");
           return;
         }
         let message = JSON.parse(messages);
         if (message.type == 0) {
-          for (var i = 0; i > message.data.length; i++) {
+          for (var i = 0; i < message.data.length; i++) {
             message.data[i][0] = timeToLocal(message.data[i][0]);
+            message.data[i][1] = Number(message.data[i][1]);
+            message.data[i][2] = Number(message.data[i][2]);
+            message.data[i][3] = Number(message.data[i][3]);
+            message.data[i][4] = Number(message.data[i][4]);
+            message.data[i][5] = Number(message.data[i][5]);
           }
-          this.chartData.rows = message.data;
-          console.log(this.chartData.rows);
+          that.chartData.rows = message.data.reverse();
+          // console.log(that.chartData.rows);
+        }else if(message.type ==1){
+          
         }
-
-        /* for (var i = 0; i < messages.length; i++) {
-          let data = JSON.parse(messages[i]);
-          let html = "";
-          if (data.type == 1) {
-            html =
-              "<div style='background-color:#5cb85c'>" +
-              "<p>类型:实时价格</p><p>交易对:" +
-              data.topic +
-              "</p><p>数据内容: " +
-              getPriceShow(data.data) +
-              "</p>" +
-              "</div><br/>";
-            setPrice(data.data);
-          } else {
-            html =
-              "<div style='background-color:#337ab7'>" +
-              "<p>类型:k线数据</p><p>交易对时间k线:" +
-              data.topic +
-              "</p><p>数据内容:" +
-              JSON.stringify(data.data) +
-              "</p>" +
-              "</div><br/>";
-          }
-        } */
       };
     } else {
-      var item = document.createElement("div");
-      item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
+      console.log("Your browser does not support WebSockets.");
     }
   },
   methods: {
@@ -174,33 +173,48 @@ export default {
     onClickRight() {
       Toast("我的竞猜");
     },
-    OneShow() {
+    OneShow(val) {
       this.shows = 1;
+      this.changeCoin(val);
     },
-    ThreeShow() {
+    changeCoin(val) {
+      this.coin = this.coin.split(":");
+      this.coin[0] = val;
+      this.coin = this.coin.join(":");
+      this.conn.send(this.coin);
+    },
+    ThreeShow(val) {
       this.shows = 2;
+      this.changeCoin(val);
     },
-    fiveShow() {
+    fiveShow(val) {
       this.shows = 3;
+      this.changeCoin(val);
     },
-    fifShow() {
+    fifShow(val) {
       this.shows = 4;
+      this.changeCoin(val);
     },
-    thiryShow() {
+    thiryShow(val) {
       this.shows = 5;
+      this.changeCoin(val);
     },
-    OnehourShow() {
+    OnehourShow(val) {
       this.shows = 6;
+      this.changeCoin(val);
     },
-    dayShow() {
+    dayShow(val) {
       this.shows = 7;
+      this.changeCoin(val);
     },
-    weekShow() {
+    weekShow(val) {
       this.shows = 8;
+      this.changeCoin(val);
     },
     handleChange(e) {
       console.log(e);
       this.conn.send(e.target.value);
+      this.coin = e.target.value;
     }
   }
 };
