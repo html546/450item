@@ -1,5 +1,5 @@
 <template>
-  <BgPic>
+  <BgPic class="bgpic">
     <template #content>
       <div v-for="(val,key) in regdatasets" :key="key">
         <input

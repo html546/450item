@@ -74,7 +74,7 @@
       <ve-candle :data="chartData" width="100%" :settings="chartSettings"></ve-candle>
     </div>
     <div class="btn_group">
-      <van-row type="flex" justify="center" :gutter="10">
+      <van-row type="flex" justify="center" :gutter="10" class="btn_row">
         <van-col>
           <button class="btn_rise" @click="CheckRise">看涨</button>
         </van-col>
@@ -86,13 +86,59 @@
     <van-popup v-model="show" position="bottom" :overlay="false">
       <div class="rise_content">
         <img src="../assets/close.png" class="close_icon" alt @click="handleClose">
+        <div class="rise_group">
+          <label for>看涨方式</label>
+          <input type="text" value="5.0000">
+          <span>最低买入1000</span>
+        </div>
+        <div class="rise_group">
+          <label for>看涨方向</label>
+          <button class="rise_btn">看涨</button>
+        </div>
+        <div class="rise_group">
+          <label for>选择数量</label>
+          <van-stepper v-model="rise_num" integer :min="10" :step="10"></van-stepper>
+          <select name id>
+            <option value>EOS</option>
+            <option value>BTC</option>
+            <option value>ETH</option>
+          </select>
+        </div>
+        <div class="rise_group">
+          <label for>占用USDT：</label>
+          <span>50.00</span>
+          <span>USDT</span>
+        </div>
+        <div class="rise_group">
+          <label for>可用USDT：</label>
+          <span>325.12</span>
+          <span>USDT</span>
+        </div>
+        <div class="rise_group">
+          <label for>选择时间</label>
+          <van-radio-group v-model="time">
+            <van-radio class="time_radio" name="1">5分钟</van-radio>
+            <van-radio class="time_radio" name="2">8分钟</van-radio>
+            <van-radio class="time_radio" name="3">10分钟</van-radio>
+          </van-radio-group>
+        </div>
+        <button class="confirm_btn">确定</button>
       </div>
     </van-popup>
   </div>
 </template>
 
 <script>
-import { NavBar, Toast, Row, Col, Popup } from "vant";
+import {
+  NavBar,
+  Toast,
+  Row,
+  Col,
+  Popup,
+  Stepper,
+  RadioGroup,
+  Radio
+} from "vant";
 import VeCandle from "v-charts/lib/candle.common";
 import "v-charts/lib/style.css";
 function timeToLocal(time) {
@@ -141,7 +187,9 @@ export default {
       quote_volume_24h: "",
       high_24h: "",
       last: "",
-      show: false
+      show: false,
+      rise_num: 10,
+      time: 1
     };
   },
   components: {
@@ -149,6 +197,9 @@ export default {
     "van-row": Row,
     "van-col": Col,
     "van-popup": Popup,
+    "van-stepper": Stepper,
+    "van-radio-group": RadioGroup,
+    "van-radio": Radio,
     VeCandle
   },
   created() {
@@ -318,18 +369,23 @@ export default {
   }
 }
 .btn_group {
-  button {
-    width: 171px;
-    height: 43px;
-    color: #fff;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    &.btn_rise {
-      background: #71cd8c;
-    }
-    &.btn_fail {
-      background: #dc6976;
+  width: 100%;
+  box-sizing: border-box;
+  .btn_row {
+    margin: 0 !important;
+    button {
+      width: 171px;
+      height: 43px;
+      color: #fff;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      &.btn_rise {
+        background: #71cd8c;
+      }
+      &.btn_fail {
+        background: #dc6976;
+      }
     }
   }
 }
@@ -345,6 +401,70 @@ export default {
     right: 14px;
     width: 11px;
     height: 11px;
+  }
+  .rise_group {
+    height: 33px;
+    line-height: 33px;
+    font-size: 12px;
+    overflow: hidden;
+    &:first-of-type {
+      margin-top: 33px;
+    }
+    &:not(:first-of-type) {
+      margin-top: 17px;
+    }
+    span {
+      float: left;
+      display: block;
+      &:last-of-type {
+        float: right;
+      }
+    }
+    label {
+      width: 71px;
+      text-align: left;
+      float: left;
+    }
+    input {
+      text-align: center;
+      border: 1px solid #686666;
+      outline: none;
+      margin-right: 6px;
+      float: left;
+      height: 29px;
+    }
+    .rise_btn {
+      width: 130px;
+      height: 30px;
+      background: #71cd8c;
+      color: #fff;
+      outline: none;
+      border: none;
+      float: left;
+    }
+    select {
+      /* position: absolute;
+    right: 14px; */
+      float: right;
+      border: none;
+      outline: none;
+      line-height: 33px;
+      height: 33px;
+    }
+    .time_radio {
+      float: left;
+      margin-right: 12px;
+    }
+  }
+  .confirm_btn {
+    width: 342px;
+    height: 43px;
+    border-radius: 5px;
+    color: #fff;
+    background: #dc6976;
+    margin: 22px auto;
+    outline: none;
+    border: none;
   }
 }
 </style>
