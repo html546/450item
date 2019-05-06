@@ -27,13 +27,42 @@
         </van-col>
       </van-row>
     </div>
-    <div class="cell_group1">
-      <van-cell-group>
+    <div class="cell_group_one">
+      <van-cell-group :border="false">
         <van-cell title="邀请推广" is-link>
-          <van-icon slot="icon" name="exchange" size="20px"></van-icon>
+          <van-icon slot="icon" class-prefix="iconfont" name="share" size="20px"></van-icon>
         </van-cell>
         <van-cell title="充提币记录" is-link>
-          <van-icon slot="icon" name="upgrade" size="20px"></van-icon>
+          <van-icon slot="icon" class-prefix="iconfont" name="list" size="20px"></van-icon>
+        </van-cell>
+      </van-cell-group>
+    </div>
+    <div class="cell_group_two">
+      <van-cell-group :border="false">
+        <van-cell title="充币" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="recharge"></van-icon>
+        </van-cell>
+        <van-cell title="提币" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="draw"></van-icon>
+        </van-cell>
+        <van-cell title="划转" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="transfer"></van-icon>
+        </van-cell>
+      </van-cell-group>
+    </div>
+    <div class="cell_group_three">
+      <van-cell-group :border="false">
+        <van-cell title="实名认证" value="去认证" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="auth"></van-icon>
+        </van-cell>
+        <van-cell title="账号安全" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="safe"></van-icon>
+        </van-cell>
+        <van-cell title="收款账户" value="去设置" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="receive"></van-icon>
+        </van-cell>
+        <van-cell title="在线客服" is-link>
+          <van-icon slot="icon" class-prefix="iconfont" size="20px" name="service"></van-icon>
         </van-cell>
       </van-cell-group>
     </div>
@@ -59,9 +88,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+.van-cell:not(:last-child)::after {
+  left: 0;
+  border-bottom: 0.02667rem solid #1c2b49;
+}
 .mine {
   width: 100%;
-  height: 100%;
+  height: calc(100%-50px);
+  overflow-y: scroll;
   background: #000f26;
   .mine_bar {
     background: #0b1a3b;
@@ -127,6 +162,42 @@ export default {
           }
         }
       }
+    }
+  }
+  .cell_group_one {
+    background: #0b1a3b;
+    margin-bottom: 20px;
+    .iconfont-share:before {
+      content: "\e61d";
+    }
+    .iconfont-list:before {
+      content: "\e65d";
+    }
+  }
+  .cell_group_two {
+    margin-bottom: 20px;
+    .iconfont-recharge:before {
+      content: "\e645";
+    }
+    .iconfont-draw:before {
+      content: "\e621";
+    }
+    .iconfont-transfer:before {
+      content: "\e63e";
+    }
+  }
+  .cell_group_three {
+    .iconfont-auth:before {
+      content: "\e711";
+    }
+    .iconfont-safe:before{
+      content:"\e626";
+    }
+    .iconfont-receive:before{
+      content:"\e68e";
+    }
+    .iconfont-service:before{
+      content:"\e602";
     }
   }
 }

@@ -31,4 +31,17 @@ p {
   margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: "iconfont"; /* project id 1175981 */
+  src: url("//at.alicdn.com/t/font_1175981_22g4fn4ji2i.ttf") format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  margin-right: 10px;
+}
 </style>
