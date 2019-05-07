@@ -242,6 +242,7 @@ export default {
   methods: {
     onClickLeft() {
       this.$router.go(-1);
+      this.conn.close();
     },
     onClickRight() {
       Toast("我的竞猜");

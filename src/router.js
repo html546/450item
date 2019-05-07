@@ -27,7 +27,6 @@ export default new Router({
     },
     {
       path: '/tab',
-      name: 'tab',
       component: Tab,
       children: [
         {

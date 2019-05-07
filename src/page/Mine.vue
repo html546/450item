@@ -66,11 +66,15 @@
         </van-cell>
       </van-cell-group>
     </div>
+    <div class="logout">
+      <button @click="logout">退出登录</button>
+    </div>
   </div>
 </template>
 
 <script>
 import { NavBar, Cell, CellGroup, Icon, Row, Col } from "vant";
+import store from "../store";
 export default {
   name: "",
   data() {
@@ -83,12 +87,17 @@ export default {
     "van-icon": Icon,
     "van-row": Row,
     "van-col": Col
+  },
+  methods: {
+    logout() {
+      store.commit("REMOVE_MESSAGE");
+      this.$router.replace("/");
+    }
   }
 };
 </script>
 
 <style lang="less" scoped>
-
 .van-cell:not(:last-child)::after {
   left: 0;
   border-bottom: 0.02667rem solid #1c2b49;
@@ -190,14 +199,28 @@ export default {
     .iconfont-auth:before {
       content: "\e711";
     }
-    .iconfont-safe:before{
-      content:"\e626";
+    .iconfont-safe:before {
+      content: "\e626";
     }
-    .iconfont-receive:before{
-      content:"\e68e";
+    .iconfont-receive:before {
+      content: "\e68e";
     }
-    .iconfont-service:before{
-      content:"\e602";
+    .iconfont-service:before {
+      content: "\e602";
+    }
+  }
+  .logout {
+    text-align: center;
+    button {
+      margin: 20px auto;
+      background: #dc6976;
+      width: 343px;
+      height: 42px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
     }
   }
 }
