@@ -8,12 +8,15 @@ module.exports = {
       less: {
         modifyVars: {
           'nav-bar-background-color': '#181b2c',
-          'nav-bar-icon-color': '#fff',
-          'nav-bar-text-color': '#fff',
-          'nav-bar-title-text-color': '#fff',
-          'cell-background-color': "#0b1a3b",
-          'cell-text-color': "#fff",
-          'cell-active-color': '#0b1a3b'
+          'nav-bar-icon-color': '#ffffff',
+          'nav-bar-text-color': '#ffffff',
+          'nav-bar-title-text-color': '#ffffff',
+          'cell-background-color': '#0b1a3b',
+          'cell-text-color': '#ffffff',
+          'cell-active-color': '#0b1a3b',
+          'field-input-text-color': '#ffffff',
+          'field-input-disabled-text-color': '#ffffff',
+          'field-placeholder-text-color': '#ffffff'
         }
       }
     }

@@ -42,7 +42,7 @@
         <van-cell title="充币" is-link>
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="recharge"></van-icon>
         </van-cell>
-        <van-cell title="提币" is-link>
+        <van-cell title="提币" is-link to="/draw">
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="draw"></van-icon>
         </van-cell>
         <van-cell title="划转" is-link>
@@ -66,14 +66,16 @@
         </van-cell>
       </van-cell-group>
     </div>
-    <div class="logout">
+    <!-- <div class="logout">
       <button @click="logout">退出登录</button>
-    </div>
+    </div>-->
+    <BottomBtn @click="logout">退出登录</BottomBtn>
   </div>
 </template>
 
 <script>
 import { NavBar, Cell, CellGroup, Icon, Row, Col } from "vant";
+import BottomBtn from "../components/BottomBtn";
 import store from "../store";
 export default {
   name: "",
@@ -86,10 +88,12 @@ export default {
     "van-cell-group": CellGroup,
     "van-icon": Icon,
     "van-row": Row,
-    "van-col": Col
+    "van-col": Col,
+    BottomBtn
   },
   methods: {
     logout() {
+      alert(123);
       store.commit("REMOVE_MESSAGE");
       this.$router.replace("/");
     }
@@ -212,20 +216,6 @@ export default {
     }
     .iconfont-service:before {
       content: "\e602";
-    }
-  }
-  .logout {
-    text-align: center;
-    button {
-      margin: 20px auto;
-      background: #dc6976;
-      width: 343px;
-      height: 42px;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 16px;
     }
   }
 }

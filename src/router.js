@@ -11,6 +11,7 @@ import Option from './page/Option.vue'
 import Mine from './page/Mine.vue'
 import Guess from './page/Guess.vue'
 import Record from './page/Record'
+import Draw from './page/Draw'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
       path: '/record',
       name: 'record',
       component: Record
+    },
+    {
+      path: '/draw',
+      name: 'draw',
+      component: Draw
     },
     {
       path: '/about',

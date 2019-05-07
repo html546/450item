@@ -44,4 +44,7 @@ p {
   -moz-osx-font-smoothing: grayscale;
   margin-right: 10px;
 }
+.van-field__control {
+  color: #fff !important;
+}
 </style>
