@@ -69,7 +69,7 @@
     <!-- <div class="logout">
       <button @click="logout">退出登录</button>
     </div>-->
-    <BottomBtn @click="logout">退出登录</BottomBtn>
+    <BottomBtn @logout="logout">退出登录</BottomBtn>
   </div>
 </template>
 
@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     logout() {
-      alert(123);
+      console.log(123);
       store.commit("REMOVE_MESSAGE");
       this.$router.replace("/");
     }
