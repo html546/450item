@@ -32,7 +32,7 @@
         <van-cell title="邀请推广" is-link>
           <van-icon slot="icon" class-prefix="iconfont" name="share" size="20px"></van-icon>
         </van-cell>
-        <van-cell title="充提币记录" is-link>
+        <van-cell title="充提币记录" is-link to="/record">
           <van-icon slot="icon" class-prefix="iconfont" name="list" size="20px"></van-icon>
         </van-cell>
       </van-cell-group>
@@ -109,6 +109,10 @@ export default {
   background: #000f26;
   .mine_bar {
     background: #0b1a3b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
   .mine_message {
     display: flex;
@@ -120,6 +124,7 @@ export default {
     padding: 0 16px;
     box-sizing: border-box;
     background: #0b1a3b;
+    margin: 46px auto 0;
     .avatar {
     }
     .mine_content {

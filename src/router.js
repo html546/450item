@@ -10,6 +10,7 @@ import Future from './page/Future.vue'
 import Option from './page/Option.vue'
 import Mine from './page/Mine.vue'
 import Guess from './page/Guess.vue'
+import Record from './page/Record'
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export default new Router({
       path: '/guess',
       name: 'guess',
       component: Guess
+    },
+    {
+      path: '/record',
+      name: 'record',
+      component: Record
     },
     {
       path: '/about',
