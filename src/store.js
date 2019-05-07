@@ -5,10 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    message: {
-      userid: JSON.parse(localStorage.getItem('message')).userid || '',
-      sessionid: JSON.parse(localStorage.getItem('message')).sessionid || ''
-    }
+    message: JSON.parse(localStorage.getItem('message')) || ''
   },
   mutations: {
     SET_MESSAGE(state, message) {

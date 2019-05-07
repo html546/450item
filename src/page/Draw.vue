@@ -19,11 +19,15 @@
     <van-cell-group :border="false" title="资金密码">
       <van-field v-model="password" placeholder="请输入资金密码" type="password"></van-field>
     </van-cell-group>
+    <BottomBtn>
+      提交
+    </BottomBtn>
   </div>
 </template>
 
 <script>
 import { NavBar, Field, CellGroup } from "vant";
+import BottomBtn from '../components/BottomBtn'
 export default {
   name: "",
   data() {
@@ -37,7 +41,8 @@ export default {
   components: {
     "van-nav-bar": NavBar,
     "van-field": Field,
-    "van-cell-group": CellGroup
+    "van-cell-group": CellGroup,
+    BottomBtn
   },
   methods: {
     onClickLeft() {

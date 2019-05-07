@@ -1,5 +1,5 @@
 <template>
-  <div class="btn">
+  <div class="btn" @click="logout">
     <button class="btn_bottom">
       <slot/>
     </button>
@@ -11,7 +11,12 @@ export default {
   name: "",
   data() {
     return {};
-  }
+  },
+  methods: {
+    logout() {
+      this.$emit('btnEvent');
+    }
+  },
 };
 </script>
 

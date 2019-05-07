@@ -34,7 +34,7 @@ export default {
   components: {
     BgPic
   },
-  created() {},
+  created() { },
   methods: {
     submit() {
       this.axios

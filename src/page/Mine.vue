@@ -69,7 +69,7 @@
     <!-- <div class="logout">
       <button @click="logout">退出登录</button>
     </div>-->
-    <BottomBtn @logout="logout">退出登录</BottomBtn>
+    <BottomBtn @btnEvent="logout">退出登录</BottomBtn>
   </div>
 </template>
 
