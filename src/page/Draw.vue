@@ -30,7 +30,8 @@ export default {
     return {
       coin: "USDT",
       num: 10000,
-      real_num: 100.0
+      real_num: 100.0,
+      password: ""
     };
   },
   components: {
