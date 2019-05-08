@@ -71,7 +71,12 @@
       </van-row>
     </div>
     <div>
-      <ve-candle :data="chartData" width="100%" :settings="chartSettings"></ve-candle>
+      <ve-candle
+        :data="chartData"
+        width="100%"
+        :after-config="afterConfig"
+        :settings="chartSettings"
+      ></ve-candle>
     </div>
     <div class="btn_group">
       <van-row type="flex" justify="center" :gutter="10" class="btn_row">
@@ -167,7 +172,10 @@ export default {
       chartSettings: {
         showMA: true,
         showVol: true,
-        showDataZoom: true
+        showDataZoom: true,
+        textStyle: {
+          color: "#fff"
+        }
       },
       shows: 1,
       conn: "",
@@ -295,6 +303,15 @@ export default {
     },
     handleClose() {
       this.show = false;
+    },
+    afterConfig(options) {
+      options.legend.textStyle = {
+        color: "#fff"
+      };
+      options.textStyle = {
+        color: "#fff"
+      };
+      return options;
     }
   }
 };
