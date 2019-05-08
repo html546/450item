@@ -47,4 +47,8 @@ p {
 .van-field__control {
   color: #fff !important;
 }
+.van-cell:not(:last-child)::after {
+  left: 0 !important;
+  border-bottom: 0.02667rem solid #1c2b49 !important;
+}
 </style>

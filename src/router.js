@@ -13,6 +13,7 @@ import Guess from './page/Guess.vue'
 import Record from './page/Record'
 import Draw from './page/Draw'
 import RealName from './page/RealName'
+import Safe from './page/Safe'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({
       path: '/realname',
       name: 'realname',
       component: RealName
+    },
+    {
+      path: '/safe',
+      name: 'safe',
+      component: Safe
     },
     {
       path: '/about',

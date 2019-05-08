@@ -55,7 +55,7 @@
         <van-cell title="实名认证" value="去认证" is-link to="/realname">
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="auth"></van-icon>
         </van-cell>
-        <van-cell title="账号安全" is-link>
+        <van-cell title="账号安全" is-link to="/safe">
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="safe"></van-icon>
         </van-cell>
         <van-cell title="收款账户" value="去设置" is-link>
@@ -102,10 +102,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.van-cell:not(:last-child)::after {
-  left: 0;
-  border-bottom: 0.02667rem solid #1c2b49;
-}
 .mine {
   width: 100%;
   height: calc(100%-50px);
@@ -129,6 +125,7 @@ export default {
     box-sizing: border-box;
     background: #0b1a3b;
     margin: 46px auto 0;
+    position: relative;
     .avatar {
     }
     .mine_content {
