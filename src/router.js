@@ -14,6 +14,7 @@ import Record from './page/Record'
 import Draw from './page/Draw'
 import RealName from './page/RealName'
 import Safe from './page/Safe'
+import Account from './page/Account'
 
 Vue.use(Router)
 
@@ -84,6 +85,11 @@ export default new Router({
       path: '/safe',
       name: 'safe',
       component: Safe
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: Account
     },
     {
       path: '/about',

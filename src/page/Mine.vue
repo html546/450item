@@ -58,7 +58,7 @@
         <van-cell title="账号安全" is-link to="/safe">
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="safe"></van-icon>
         </van-cell>
-        <van-cell title="收款账户" value="去设置" is-link>
+        <van-cell title="收款账户" value="去设置" is-link to="/account">
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="receive"></van-icon>
         </van-cell>
         <van-cell title="在线客服" is-link>
@@ -66,9 +66,6 @@
         </van-cell>
       </van-cell-group>
     </div>
-    <!-- <div class="logout">
-      <button @click="logout">退出登录</button>
-    </div>-->
     <BottomBtn @btnEvent="logout">退出登录</BottomBtn>
   </div>
 </template>
