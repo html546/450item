@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Tab from './views/Tab.vue'
@@ -15,6 +14,7 @@ import Draw from './page/Draw'
 import RealName from './page/RealName'
 import Safe from './page/Safe'
 import Account from './page/Account'
+import AddBank from './page/AddBank'
 
 Vue.use(Router)
 
@@ -90,6 +90,11 @@ export default new Router({
       path: '/account',
       name: 'account',
       component: Account
+    },
+    {
+      path: '/addbank',
+      name: 'addbank',
+      component: AddBank
     },
     {
       path: '/about',

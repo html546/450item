@@ -8,7 +8,7 @@
       @click-left="onClickLeft"
     ></van-nav-bar>
     <van-cell-group :border="false">
-      <van-cell title="银行卡转账" is-link></van-cell>
+      <van-cell title="银行卡转账" is-link to="/addbank"></van-cell>
       <van-cell title="微信支付" is-link></van-cell>
       <van-cell title="支付宝支付" is-link></van-cell>
     </van-cell-group>
