@@ -16,6 +16,7 @@ import Safe from './page/Safe'
 import Account from './page/Account'
 import AddBank from './page/AddBank'
 import WeChat from './page/WeChat'
+import Alipay from './page/Alipay'
 
 Vue.use(Router)
 
@@ -101,6 +102,11 @@ export default new Router({
       path: '/wechat',
       name: 'wechat',
       component: WeChat
+    },
+    {
+      path: '/alipay',
+      name: 'alipay',
+      component: Alipay
     },
     {
       path: '/about',

@@ -33,7 +33,7 @@ p {
 }
 @font-face {
   font-family: "iconfont"; /* project id 1175981 */
-  src: url("//at.alicdn.com/t/font_1175981_22g4fn4ji2i.ttf") format("truetype");
+  src: url("//at.alicdn.com/t/font_1175981_1oosfs2c89h.ttf") format("truetype");
 }
 .iconfont {
   font-family: "iconfont" !important;

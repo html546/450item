@@ -1,7 +1,7 @@
 <template>
   <div class="wechat">
     <van-nav-bar
-      title="添加微信"
+      title="添加支付宝"
       :border="false"
       class="wechat_bar"
       left-arrow
@@ -10,8 +10,8 @@
     <van-cell-group :border="false" title="姓名">
       <van-field v-model="username" :readonly="true"></van-field>
     </van-cell-group>
-    <van-cell-group :border="false" title="微信号">
-      <van-field v-model="wechat_number" placeholder="请输入微信号"></van-field>
+    <van-cell-group :border="false" title="支付宝账号">
+      <van-field v-model="wechat_number" placeholder="请输入支付宝账号"></van-field>
     </van-cell-group>
     <van-cell-group :border="false" title="收款码" style="text-align:center;">
       <div class="upload">
