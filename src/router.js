@@ -12,6 +12,7 @@ import Mine from './page/Mine.vue'
 import Guess from './page/Guess.vue'
 import Record from './page/Record'
 import Draw from './page/Draw'
+import RealName from './page/RealName'
 
 Vue.use(Router)
 
@@ -72,6 +73,11 @@ export default new Router({
       path: '/draw',
       name: 'draw',
       component: Draw
+    },
+    {
+      path: '/realname',
+      name: 'realname',
+      component: RealName
     },
     {
       path: '/about',

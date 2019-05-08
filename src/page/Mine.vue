@@ -52,7 +52,7 @@
     </div>
     <div class="cell_group_three">
       <van-cell-group :border="false">
-        <van-cell title="实名认证" value="去认证" is-link>
+        <van-cell title="实名认证" value="去认证" is-link to="/realname">
           <van-icon slot="icon" class-prefix="iconfont" size="20px" name="auth"></van-icon>
         </van-cell>
         <van-cell title="账号安全" is-link>
