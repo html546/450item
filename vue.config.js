@@ -1,8 +1,11 @@
+const BASE_URL = process.env.NODE_ENV == 'production' ? '/static/settlement/vue_mobile1/' : '/';
 module.exports = {
   lintOnSave: false,
+  baseUrl: BASE_URL,
   devServer: {
     proxy: 'http://t450.shangtua.com'
   },
+  assetsDir: 'static',
   css: {
     loaderOptions: {
       less: {
@@ -20,5 +23,6 @@ module.exports = {
         }
       }
     }
-  }
+  },
+
 }
